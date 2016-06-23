@@ -1,0 +1,28 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  name: chef_zero
+
+# Uncomment the following verifier to leverage Inspec instead of Busser (the
+# default verifier)
+# verifier:
+#   name: inspec
+
+platforms:
+  - name: centos-6.7
+   driver_config:
+        image: centos:6.7
+        platform: centos
+
+  - name: oracle_linux7
+   driver_config:
+        image: oraclelinux:7
+        platform: centos
+
+suites:
+  - name: default
+    run_list:
+      - recipe[workstation::default]
+    attributes:
